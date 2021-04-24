@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Diver/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Stage01.tscn" type="PackedScene" id=3]
+
+[node name="Root" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 230.754, 123.346 )
+
+[node name="Stage1" parent="." instance=ExtResource( 3 )]

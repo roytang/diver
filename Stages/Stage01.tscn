@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Stages/TransitionArea.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Spike/SpikeTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Stages/Stage02.tscn" type="PackedScene" id=3]
+
+[node name="Stage01" type="Node2D"]
+
+[node name="Spikes" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 31, 0, 0, 65536, 0, 0, 65567, 0, 0, 131072, 0, 0, 131103, 0, 0, 196608, 0, 0, 196639, 0, 0, 262144, 0, 0, 262175, 0, 0, 327680, 0, 0, 327711, 0, 0, 393216, 0, 0, 393247, 0, 0, 458752, 0, 0, 458783, 0, 0, 524288, 0, 0, 524319, 0, 0, 589824, 0, 0, 589855, 0, 0, 655360, 0, 0, 655391, 0, 0, 720896, 0, 0, 720927, 0, 0, 786432, 0, 0, 786463, 0, 0, 851968, 0, 0, 851999, 0, 0, 917504, 0, 0, 917535, 0, 0, 983040, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983071, 0, 0, 1048576, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048607, 0, 0, 1114112, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114143, 0, 0, 1179648, 0, 0, 1179679, 0, 0, 1245184, 0, 0, 1245215, 0, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 457.0
+margin_top = 295.0
+margin_right = 576.0
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 108.321, 51.7328 )
+text = "<- or -> to move
+[space] to bounce"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 166.344
+margin_top = 422.961
+margin_right = 285.344
+margin_bottom = 461.961
+rect_pivot_offset = Vector2( 108.321, 51.7328 )
+text = "Avoid the spikes,
+YOU'LL DIE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 458.335
+margin_top = 545.95
+margin_right = 587.335
+margin_bottom = 584.95
+text = "Go down to proceed"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 446.321
+margin_top = 14.6836
+margin_right = 565.321
+margin_bottom = 53.6836
+text = "Can't go up"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionArea" parent="." instance=ExtResource( 1 )]
+next_scene = ExtResource( 3 )
