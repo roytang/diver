@@ -40,9 +40,11 @@ func get_input():
 	if Input.is_action_pressed("ui_accept"):
 		var now = OS.get_ticks_msec()
 		if now >= next_bounce:
-			velocity.y = -bounce
-			next_bounce = now + bounce_cooldown
-			bounce_to = now + bounce_time
+			# don't allow bounce if too close to top
+			if position.y > 32:
+				velocity.y = -bounce
+				next_bounce = now + bounce_cooldown
+				bounce_to = now + bounce_time
 		
 func _physics_process(delta):
 	var now = OS.get_ticks_msec()
@@ -75,10 +77,11 @@ func _physics_process(delta):
 			# YOU'LL DIE!
 			set_process(false)
 			$AnimationPlayer.play("Death")
-		elif "AirBubble" in collision.collider.name:
-			oxygen = clamp(oxygen + 25, 0, 100)
-			emit_signal("breath", self)
-			collision.collider.queue_free()
+			
+func get_bubble():
+	oxygen = clamp(oxygen + 25, 0, 100)
+	emit_signal("breath", self)
+	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

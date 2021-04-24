@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://OxygenBar.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Diver/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Gem/gem.png" type="Texture" id=4]
 [ext_resource path="res://HUD.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Diver/Sprites/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://Audio/random.ogg" type="AudioStream" id=7]
 
 [node name="Root" type="Node2D"]
 
@@ -87,6 +88,10 @@ text = "Stage 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
 
 [connection signal="breath" from="Player" to="CanvasLayer/OxygenBar" method="_on_Player_breath"]
 [connection signal="stats_change" from="Player" to="CanvasLayer/HUD" method="_on_Player_stats_change"]

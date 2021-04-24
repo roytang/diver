@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Bubbler/Bubbler.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Spike/SpikeTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Entities/Gem/Gem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Stage03.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stages/TransitionArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Seeker/Seeker.tscn" type="PackedScene" id=6]
 
 [node name="Stage02" type="Node2D"]
 
@@ -34,13 +35,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label4" type="Label" parent="."]
+margin_left = 666.582
+margin_top = 302.51
+margin_right = 980.582
+margin_bottom = 342.51
+text = "Avoid the SEEKER FISH!
+He's out to get you!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label3" type="Label" parent="."]
 margin_left = 361.661
 margin_top = 157.272
 margin_right = 675.661
 margin_bottom = 204.272
 text = "Collect gems! 
-You may need them later!"
+5 gems = 1 extra life!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,3 +75,9 @@ position = Vector2( 512.811, 219.289 )
 
 [node name="TransitionArea" parent="." instance=ExtResource( 5 )]
 next_scene = ExtResource( 4 )
+
+[node name="Gem3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 804.215, 439.416 )
+
+[node name="Seeker" parent="." instance=ExtResource( 6 )]
+position = Vector2( 818.469, 369.035 )
