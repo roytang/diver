@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://OxygenBar.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Diver/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Stage01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Gem/gem.png" type="Texture" id=4]
+[ext_resource path="res://HUD.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Diver/Sprites/sprite_0.png" type="Texture" id=6]
 
 [node name="Root" type="Node2D"]
 
@@ -34,4 +37,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HUD" type="ColorRect" parent="CanvasLayer"]
+margin_left = 789.0
+margin_top = 5.0
+margin_right = 987.0
+margin_bottom = 74.0
+color = Color( 0, 0, 0, 0.501961 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesLabel" type="Sprite" parent="CanvasLayer/HUD"]
+position = Vector2( 114.859, 16 )
+scale = Vector2( 0.867268, 0.808276 )
+texture = ExtResource( 6 )
+
+[node name="LivesCount" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 141.444
+margin_top = 9.9288
+margin_right = 171.444
+margin_bottom = 24.9288
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GemLabel" type="Sprite" parent="CanvasLayer/HUD"]
+position = Vector2( 114.859, 49.656 )
+scale = Vector2( 0.867268, 0.808276 )
+texture = ExtResource( 4 )
+
+[node name="GemCount" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 141.916
+margin_top = 42.4925
+margin_right = 171.916
+margin_bottom = 57.4925
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageLabel" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 8.0
+margin_top = 11.0
+margin_right = 70.0
+margin_bottom = 25.0
+text = "Stage 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="breath" from="Player" to="CanvasLayer/OxygenBar" method="_on_Player_breath"]
+[connection signal="stats_change" from="Player" to="CanvasLayer/HUD" method="_on_Player_stats_change"]

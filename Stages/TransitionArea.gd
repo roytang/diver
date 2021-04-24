@@ -13,5 +13,5 @@ func _on_TransitionArea_body_entered(body):
 			get_tree().root.call_deferred("add_child", ns_instance)
 			get_parent().queue_free()
 			var player = get_tree().root.get_node("Root/Player")
-			player.position.y = 0
+			player.next_stage()
 		
