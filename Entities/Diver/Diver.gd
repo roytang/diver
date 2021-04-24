@@ -107,6 +107,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			# TODO Death, game over, whatever
 			get_tree().queue_delete(self)
 			get_tree().root.get_node("Root/AnimationPlayer").play("GameOver")
+			get_tree().root.get_node("Root/CanvasLayer/GameOver").set_max_depth(max_depth)
 			get_tree().root.get_node("Root/CanvasLayer/GameOver").set_process_input(true)
 			# get_tree().paused = true
 

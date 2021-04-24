@@ -188,6 +188,19 @@ custom_fonts/font = SubResource( 3 )
 text = "Press [space] to restart"
 align = 1
 
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 256.0
+margin_top = 300.0
+margin_right = 768.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 3 )
+text = "Depth
+Quote"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
