@@ -20,6 +20,7 @@ var oxygen = 100
 var gems = 0
 var stage = 1
 var lives = 2
+var max_depth = 0
 
 var tiny_bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 
@@ -106,7 +107,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			# TODO Death, game over, whatever
 			get_tree().queue_delete(self)
 			get_tree().root.get_node("Root/AnimationPlayer").play("GameOver")
-			get_tree().root.get_node("Root/GameOver").set_process_input(true)
+			get_tree().root.get_node("Root/CanvasLayer/GameOver").set_process_input(true)
 
 func add_gem():
 	gems = gems + 1
@@ -129,3 +130,11 @@ func _on_RespawnTimer_timeout():
 	if oxygen < 50:
 		oxygen = 50
 	dead = false
+
+
+func _on_DepthTimer_timeout():
+	var depth = (stage-1) * 100
+	depth = depth + floor(position.y*100/640)
+	if depth > max_depth:
+		max_depth = depth
+		emit_signal("stats_change", self)
