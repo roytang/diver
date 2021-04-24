@@ -27,7 +27,7 @@ var tiny_bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stage_start_position = position
-	emit_signal("stats_changed", self)
+	emit_signal("stats_change", self)
 
 func get_input():
 	if Input.is_action_pressed("ui_left"):
