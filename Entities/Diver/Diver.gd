@@ -67,11 +67,16 @@ func _physics_process(delta):
 	var collision = move_and_collide(motion)	
 	if collision:
 		print(collision.collider.name)
+		print(collision.collider)
 		if collision.collider.name == "Spikes":
 			# YOU'LL DIE!
 			set_process(false)
 			$AnimationPlayer.play("Death")
-		if "AirBubble" in collision.collider.name:
+		elif collision.collider.is_in_group("Enemies"):
+			# YOU'LL DIE!
+			set_process(false)
+			$AnimationPlayer.play("Death")
+		elif "AirBubble" in collision.collider.name:
 			oxygen = clamp(oxygen + 25, 0, 100)
 			emit_signal("breath", self)
 			collision.collider.queue_free()
