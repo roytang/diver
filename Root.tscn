@@ -10,10 +10,10 @@
 
 [node name="Root" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 230.754, 123.346 )
+[node name="Stage01" parent="." instance=ExtResource( 3 )]
 
-[node name="Stage1" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 150.119, 109.487 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
