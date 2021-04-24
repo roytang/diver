@@ -25,6 +25,7 @@ var tiny_bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stage_start_position = position
+	emit_signal("stats_changed", self)
 
 func get_input():
 	if Input.is_action_pressed("ui_left"):
@@ -66,8 +67,6 @@ func _physics_process(delta):
 	var motion = (velocity*delta)
 	var collision = move_and_collide(motion)	
 	if collision:
-		print(collision.collider.name)
-		print(collision.collider)
 		if collision.collider.name == "Spikes":
 			# YOU'LL DIE!
 			set_process(false)
