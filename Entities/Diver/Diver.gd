@@ -5,7 +5,7 @@ signal stats_change
 
 var gravity = 80
 var walkspeed = 60
-var bounce = 90
+var bounce = 85
 var bounce_cooldown = 1000
 var next_bounce = 0
 var bounce_to = 0
@@ -14,6 +14,7 @@ var next_breath = 0
 var breath_cooldown = 500
 var velocity = Vector2()
 var stage_start_position = Vector2()
+var dead = false
 
 var oxygen = 100
 var gems = 0
@@ -53,16 +54,24 @@ func _physics_process(delta):
 	else:
 		velocity.y = -bounce
 		
-	if now >= next_breath:
-		next_breath = now + breath_cooldown
-		oxygen = oxygen - 1
-		
-		# emit a bubble for flavor
-		var bubble = tiny_bubble_scene.instance()
-		bubble.position = position
-		get_tree().root.get_node("Root").add_child(bubble)
-		
-		emit_signal("breath", self)
+	if not dead:
+		if now >= next_breath:
+			next_breath = now + breath_cooldown
+			if oxygen > 0:
+				oxygen = oxygen - 1
+			
+				# emit a bubble for flavor
+				var bubble = tiny_bubble_scene.instance()
+				bubble.position = position
+				get_tree().root.get_node("Root").add_child(bubble)
+			
+				emit_signal("breath", self)
+			
+			else:
+				set_process(false)
+				$AnimationPlayer.play("Death")
+				$SoundDie.play()
+
 		
 		
 	get_input()
@@ -73,15 +82,16 @@ func _physics_process(delta):
 			# YOU'LL DIE!
 			set_process(false)
 			$AnimationPlayer.play("Death")
+			$SoundDie.play()
 		elif collision.collider.is_in_group("Enemies"):
 			# YOU'LL DIE!
 			set_process(false)
 			$AnimationPlayer.play("Death")
+			$SoundDie.play()
 			
 func get_bubble():
 	oxygen = clamp(oxygen + 25, 0, 100)
 	emit_signal("breath", self)
-	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -89,10 +99,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if lives > 0:
 			lives = lives - 1
 			emit_signal("stats_change", self)
-			# move back to the stage start position
 			position = stage_start_position
-			rotation_degrees = 0
-			scale = Vector2(1, 1)
+			$RespawnTimer.start()
+			dead = true
 		else:
 			# TODO Death, game over, whatever
 			get_tree().queue_delete(self)
@@ -106,3 +115,12 @@ func next_stage():
 	position.y = 0
 	stage_start_position = position
 	emit_signal("stats_change", self)
+
+
+func _on_RespawnTimer_timeout():
+	# move back to the stage start position
+	rotation_degrees = 0
+	scale = Vector2(1, 1)
+	if oxygen < 50:
+		oxygen = 50
+	dead = false

@@ -16,7 +16,7 @@ func _on_TransitionArea_body_entered(body):
 			# prevent immediate transition chain
 			var now = OS.get_ticks_msec()
 			if now > can_transition:
-				print("Transitioning!")
+				# print("Transitioning!")
 				
 				var player = get_tree().root.get_node("Root/Player")
 				player.next_stage()
