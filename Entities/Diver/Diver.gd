@@ -19,7 +19,7 @@ var dead = false
 var oxygen = 100
 var gems = 0
 var stage = 1
-var lives = 3
+var lives = 2
 
 var tiny_bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 
@@ -105,9 +105,15 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		else:
 			# TODO Death, game over, whatever
 			get_tree().queue_delete(self)
+			get_tree().root.get_node("Root/AnimationPlayer").play("GameOver")
+			get_tree().root.get_node("Root/GameOver").set_process_input(true)
 
 func add_gem():
 	gems = gems + 1
+	if gems >= 5:
+		gems = gems - 5
+		lives = lives + 1
+		$Sound1Up.play()
 	emit_signal("stats_change", self)
 
 func next_stage():
@@ -115,7 +121,6 @@ func next_stage():
 	position.y = 0
 	stage_start_position = position
 	emit_signal("stats_change", self)
-
 
 func _on_RespawnTimer_timeout():
 	# move back to the stage start position
