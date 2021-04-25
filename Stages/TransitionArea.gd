@@ -4,10 +4,13 @@ export (PackedScene) var next_scene
 
 var can_transition = 0
 var transition_cooldown = 500
+var wisp_scene = preload("res://Entities/Wisp/Wisp.tscn")
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	var now = OS.get_ticks_msec()
 	can_transition = now + transition_cooldown
+	rng.randomize()
 
 func _on_TransitionArea_body_entered(body):
 	if body.name == "Player":
@@ -31,3 +34,12 @@ func _on_TransitionArea_body_entered(body):
 					if N.is_in_group("Temporary"):
 						N.queue_free()
 		
+
+
+func _on_WispTimer_timeout():
+	var wisp = wisp_scene.instance()
+	wisp.position = position
+	var random_number = rng.randf()
+	wisp.position.x = random_number * 1024
+	get_tree().root.get_node("Root").add_child(wisp)
+
