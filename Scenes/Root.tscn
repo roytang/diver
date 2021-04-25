@@ -1,0 +1,245 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://GameOver.gd" type="Script" id=1]
+[ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://Victory.gd" type="Script" id=3]
+[ext_resource path="res://OxygenBar.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Root.gd" type="Script" id=5]
+[ext_resource path="res://Audio/pop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/pickup.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Diver/Sprites/sprite_0.png" type="Texture" id=8]
+[ext_resource path="res://Audio/fanfare.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Audio/bgm.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Entities/Gem/gem.png" type="Texture" id=11]
+[ext_resource path="res://Entities/Diver/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Stages/Stage01.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 14 )
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 14 )
+
+[node name="Root" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Stage01" parent="." instance=ExtResource( 13 )]
+
+[node name="Player" parent="." instance=ExtResource( 12 )]
+position = Vector2( 150, 40 )
+z_index = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OxygenBarContainer" type="ColorRect" parent="CanvasLayer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 48.0
+margin_bottom = 144.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OxygenBar" type="ColorRect" parent="CanvasLayer"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 47.0
+margin_bottom = 143.0
+color = Color( 1, 0, 0, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="ColorRect" parent="CanvasLayer"]
+margin_left = 789.0
+margin_top = 5.0
+margin_right = 987.0
+margin_bottom = 74.0
+color = Color( 0, 0, 0, 0.501961 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesLabel" type="Sprite" parent="CanvasLayer/HUD"]
+position = Vector2( 114.859, 16 )
+scale = Vector2( 0.867268, 0.808276 )
+texture = ExtResource( 8 )
+
+[node name="LivesCount" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 141.444
+margin_top = 9.9288
+margin_right = 171.444
+margin_bottom = 24.9288
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GemLabel" type="Sprite" parent="CanvasLayer/HUD"]
+position = Vector2( 114.859, 49.656 )
+scale = Vector2( 0.867268, 0.808276 )
+texture = ExtResource( 11 )
+
+[node name="GemCount" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 142.0
+margin_top = 42.0
+margin_right = 172.0
+margin_bottom = 57.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageLabel" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 8.0
+margin_top = 11.0
+margin_right = 70.0
+margin_bottom = 25.0
+text = "Depth"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DepthLabel" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 8.0
+margin_top = 42.0
+margin_right = 70.0
+margin_bottom = 56.0
+text = "0 m"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1024.0
+margin_bottom = 640.0
+color = Color( 0, 0, 0, 0.501961 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 256.0
+margin_top = 160.0
+margin_right = 768.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 256.0
+margin_top = 480.0
+margin_right = 768.0
+margin_bottom = 560.0
+custom_fonts/font = SubResource( 2 )
+text = "Press [space] to restart"
+align = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOver"]
+margin_left = 256.0
+margin_top = 300.0
+margin_right = 768.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 2 )
+text = "Depth
+Quote"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+
+[node name="SoundPickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="SoundPop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GameOver = SubResource( 3 )
+
+[node name="Victory" type="Popup" parent="."]
+pause_mode = 2
+margin_right = 1021.0
+margin_bottom = 674.0
+input_pass_on_modal_close_click = false
+popup_exclusive = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Victory"]
+margin_right = 1023.0
+margin_bottom = 597.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Victory/ColorRect"]
+margin_left = 3.0
+margin_top = 88.0
+margin_right = 1022.0
+margin_bottom = 246.0
+custom_fonts/font = SubResource( 4 )
+text = "You found the ANCIENT TREASURE!
+
+You'll be rich and famous!
+
+... wait, how are you getting out of here?"
+align = 1
+
+[node name="Label2" type="Label" parent="Victory/ColorRect"]
+margin_top = 376.0
+margin_right = 1024.0
+margin_bottom = 522.0
+custom_fonts/font = SubResource( 5 )
+text = "Honestly, I'm surprised someone had the patience to get this far...
+
+Thanks for playing my first Ludum Dare game!
+
+Press [Esc] to continue."
+align = 1
+
+[node name="Fanfare" type="AudioStreamPlayer" parent="Victory"]
+stream = ExtResource( 9 )
+
+[connection signal="breath" from="Player" to="CanvasLayer/OxygenBar" method="_on_Player_breath"]
+[connection signal="stats_change" from="Player" to="CanvasLayer/HUD" method="_on_Player_stats_change"]

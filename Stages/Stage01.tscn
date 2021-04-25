@@ -51,7 +51,7 @@ margin_right = 576.0
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 108.321, 51.7328 )
 text = "<- or -> to move
-[space] to bounce"
+[space] to swim"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

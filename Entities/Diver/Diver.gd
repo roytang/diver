@@ -81,7 +81,6 @@ func _physics_process(delta):
 	var motion = (velocity*delta)
 	var collision = move_and_collide(motion)	
 	if collision:
-		print(collision.collider.name)
 		if collision.collider.name == "Spikes":
 			# YOU'LL DIE!
 			set_process(false)

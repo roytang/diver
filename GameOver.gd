@@ -8,7 +8,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().root.get_node("Root").queue_free()
-		get_tree().change_scene("res://Splash.tscn")
+		get_tree().change_scene("res://Scenes/Splash.tscn")
 
 func set_max_depth(max_depth):
 	var quote = ""

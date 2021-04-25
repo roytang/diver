@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Entities/Spike/spike.png" type="Texture" id=1]
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 4.33112, 1.60509, 4.64267, 9.23797, 0.35891, 15.7804, 4.40901, 22.0114, 5.0321, 31.1241, 10.7957, 27.775, 15.6247, 31.5914, 21.3104, 27.4634, 26.2951, 31.2799, 27.1519, 21.8556, 32, 16.0141, 27.2298, 8.84854, 27.5413, 1.13777, 21.1546, 4.72055, 16.0141, 0.358908, 10.7178, 4.40901 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -19,7 +19,7 @@ points = PoolVector2Array( 9.78318, 4.33112, 16.3256, 0, 22.4008, 4.33112, 27.15
 0/region = Rect2( 0, 0, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
-0/occluder = SubResource( 4 )
+0/occluder = SubResource( 1 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )

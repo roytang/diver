@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Splash.gd" type="Script" id=1]
+[ext_resource path="res://Audio/random.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://art/splash.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[node name="Splash" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512.421, 302.658 )
+scale = Vector2( 0.499589, 0.288889 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 112.0
+margin_top = 48.0
+margin_right = 912.0
+margin_bottom = 168.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_right = 800.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+text = "DIVER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ColorRect"]
+margin_top = 74.0
+margin_right = 800.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 3 )
+text = "exploring spiky depths"
+align = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 112.0
+margin_top = 540.0
+margin_right = 912.0
+margin_bottom = 580.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect2"]
+margin_right = 801.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 4 )
+text = "Press [Space] to start. [Esc] to quit."
+align = 1
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
