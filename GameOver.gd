@@ -19,7 +19,7 @@ func set_max_depth(max_depth):
 	elif max_depth < 350:
 		quote = "Starting to get the hang of it eh?"
 	elif max_depth < 600:
-		quote = "You're pretty good a this!"
+		quote = "You're pretty good at this!"
 	elif max_depth < 900:
 		quote = "Woah! Are you sure you're not cheating?"
 	else:
