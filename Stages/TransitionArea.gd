@@ -5,6 +5,7 @@ export (PackedScene) var next_scene
 var can_transition = 0
 var transition_cooldown = 500
 var wisp_scene = preload("res://Entities/Wisp/Wisp.tscn")
+var bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 var rng = RandomNumberGenerator.new()
 
 func _ready():
@@ -37,8 +38,16 @@ func _on_TransitionArea_body_entered(body):
 
 
 func _on_WispTimer_timeout():
-	var wisp = wisp_scene.instance()
+	var rand1 = rng.randf()
+	var scene = wisp_scene
+	var bubble = false
+	if rand1 < 0.5:
+		scene = bubble_scene
+		bubble = true
+	var wisp = scene.instance()
 	wisp.position = position
+	if bubble:
+		wisp.wisp = true
 	var random_number = rng.randf()
 	wisp.position.x = random_number * 1024
 	get_tree().root.get_node("Root").add_child(wisp)
