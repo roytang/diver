@@ -24,11 +24,11 @@ polygon = PoolVector2Array( 15.6102, -0.758687, -0.18543, -6.09805, -10.4192, -3
 "Enemies",
 ]]
 scale = Vector2( 1.5, 1.5 )
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

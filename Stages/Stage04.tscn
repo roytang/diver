@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Seeker/Seeker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Spike/SpikeTileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Stages/TransitionArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Stages/Stage05.tscn" type="PackedScene" id=6]
 [ext_resource path="res://bg_sprites.png" type="Texture" id=7]
+[ext_resource path="res://Entities/Jellyfish/Jellyfish.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "bg_sprites.png 0"
@@ -68,3 +69,10 @@ position = Vector2( 808.825, 558.77 )
 
 [node name="TransitionArea" parent="." instance=ExtResource( 5 )]
 next_scene = ExtResource( 6 )
+
+[node name="Jellyfish" parent="." instance=ExtResource( 8 )]
+position = Vector2( 178.865, 229.931 )
+
+[node name="Jellyfish2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 120.908, 518.453 )
+facing_right = false

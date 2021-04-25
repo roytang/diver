@@ -22,6 +22,7 @@ polygon = PoolVector2Array( 15.4062, -1.13803, 14.4051, -13.1516, 8.73203, -16.4
 [node name="Jellyfish" type="KinematicBody2D" groups=[
 "Enemies",
 ]]
+collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
