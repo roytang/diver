@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://OxygenBar.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Diver/Player.tscn" type="PackedScene" id=2]
@@ -11,16 +11,18 @@
 [ext_resource path="res://Audio/pop.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://GameOver.gd" type="Script" id=11]
+[ext_resource path="res://Root.gd" type="Script" id=12]
+[ext_resource path="res://Victory.gd" type="Script" id=13]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 10 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/GameOver:modulate")
 tracks/0/interp = 1
@@ -34,12 +36,20 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 10 )
+
 [node name="Root" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="Stage01" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 150.119, 109.487 )
+position = Vector2( 916.623, 40 )
 z_index = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -141,7 +151,7 @@ margin_left = 256.0
 margin_top = 160.0
 margin_right = 768.0
 margin_bottom = 240.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 align = 1
 __meta__ = {
@@ -153,7 +163,7 @@ margin_left = 256.0
 margin_top = 480.0
 margin_right = 768.0
 margin_bottom = 560.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Press [space] to restart"
 align = 1
 
@@ -162,7 +172,7 @@ margin_left = 256.0
 margin_top = 300.0
 margin_right = 768.0
 margin_bottom = 380.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Depth
 Quote"
 align = 1
@@ -181,7 +191,51 @@ stream = ExtResource( 8 )
 stream = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/GameOver = SubResource( 4 )
+anims/GameOver = SubResource( 3 )
+
+[node name="Victory" type="Popup" parent="."]
+pause_mode = 2
+margin_right = 1021.0
+margin_bottom = 674.0
+input_pass_on_modal_close_click = false
+popup_exclusive = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Victory"]
+margin_right = 1023.0
+margin_bottom = 597.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Victory/ColorRect"]
+margin_left = 3.0
+margin_top = 88.0
+margin_right = 1022.0
+margin_bottom = 246.0
+custom_fonts/font = SubResource( 4 )
+text = "You found the ANCIENT TREASURE!
+
+You'll be rich and famous!
+
+... wait, how are you getting out of here?"
+align = 1
+
+[node name="Label2" type="Label" parent="Victory/ColorRect"]
+margin_top = 376.0
+margin_right = 1024.0
+margin_bottom = 522.0
+custom_fonts/font = SubResource( 5 )
+text = "Honestly, I'm surprised someone had the patience to get this far...
+
+Thanks for playing my first Ludum Dare game!
+
+Press [Esc] to continue."
+align = 1
 
 [connection signal="breath" from="Player" to="CanvasLayer/OxygenBar" method="_on_Player_breath"]
 [connection signal="stats_change" from="Player" to="CanvasLayer/HUD" method="_on_Player_stats_change"]

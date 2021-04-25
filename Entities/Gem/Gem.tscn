@@ -35,7 +35,7 @@ shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 4.63515, -7.28381 )
-scale = Vector2( 0.0152517, 0.0152517 )
+scale = Vector2( 0.0133256, 0.0133256 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
