@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Jellyfish/sprite_1.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Jellyfish/sprite_0.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Jellyfish/Jellyfish.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 15.6624
+height = 3.14531
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 15.4062, -1.13803, 14.4051, -13.1516, 8.73203, -16.4887, -7.28605, -15.8213, -15.6288, -6.8111, -15.6288, -0.470612 )
+
+[node name="Jellyfish" type="KinematicBody2D" groups=[
+"Enemies",
+]]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 3 )
