@@ -6,7 +6,7 @@
 [ext_resource path="res://Entities/Gem/gem.png" type="Texture" id=4]
 [ext_resource path="res://HUD.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Diver/Sprites/sprite_0.png" type="Texture" id=6]
-[ext_resource path="res://Audio/random.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Audio/bgm.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Audio/pickup.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Audio/pop.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=10]
@@ -49,7 +49,7 @@ script = ExtResource( 12 )
 [node name="Stage01" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 916.623, 40 )
+position = Vector2( 150, 40 )
 z_index = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -87,7 +87,7 @@ __meta__ = {
 }
 
 [node name="LivesLabel" type="Sprite" parent="CanvasLayer/HUD"]
-position = Vector2( -281.121, 48.5269 )
+position = Vector2( 114.859, 16 )
 scale = Vector2( 0.867268, 0.808276 )
 texture = ExtResource( 6 )
 
