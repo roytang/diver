@@ -17,3 +17,4 @@ func victory():
 	$Victory.popup()
 	$Victory.set_process_input(true)
 	get_tree().paused = true
+	$Victory/Fanfare.play()
