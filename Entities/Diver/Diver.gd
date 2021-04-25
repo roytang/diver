@@ -7,7 +7,7 @@ var gravity = 80
 var walkspeed = 60
 var bounce = 85
 var bounce_cooldown = 1000
-var next_bounce = 0
+var next_bounce = 1000
 var bounce_to = 0
 var bounce_time = 800
 var next_breath = 0
@@ -28,6 +28,8 @@ var tiny_bubble_scene = preload("res://Entities/TinyBubble/TinyBubble.tscn")
 func _ready():
 	stage_start_position = position
 	emit_signal("stats_change", self)
+	var now = OS.get_ticks_msec()
+	next_bounce = now + bounce_cooldown
 
 func get_input():
 	if Input.is_action_pressed("ui_left"):
