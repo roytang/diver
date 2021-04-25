@@ -54,7 +54,6 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -78,6 +77,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 6 )
 color = Color( 0.941176, 0.639216, 0.34902, 1 )
 range_height = 200.0
+shadow_enabled = true
 
 [node name="DepthTimer" type="Timer" parent="."]
 autostart = true
