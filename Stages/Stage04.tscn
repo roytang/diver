@@ -65,7 +65,7 @@ position = Vector2( 367.92, 233.149 )
 rotation = 3.14159
 
 [node name="Bubbler" parent="." instance=ExtResource( 4 )]
-position = Vector2( 808.825, 558.77 )
+position = Vector2( 548.021, 554.99 )
 
 [node name="TransitionArea" parent="." instance=ExtResource( 5 )]
 next_scene = ExtResource( 6 )

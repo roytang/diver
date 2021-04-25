@@ -87,7 +87,7 @@ __meta__ = {
 }
 
 [node name="LivesLabel" type="Sprite" parent="CanvasLayer/HUD"]
-position = Vector2( 114.859, 16 )
+position = Vector2( -281.121, 48.5269 )
 scale = Vector2( 0.867268, 0.808276 )
 texture = ExtResource( 6 )
 
@@ -137,6 +137,7 @@ __meta__ = {
 }
 
 [node name="GameOver" type="ColorRect" parent="CanvasLayer"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 1024.0
 margin_bottom = 640.0
