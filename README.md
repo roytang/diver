@@ -20,5 +20,7 @@ Stack:
 ---
 
 Source code: https://github.com/roytang/diver
+
 itch.io: https://hungryroy.itch.io/diver
+
 Visit my website/blog: https://roytang.net
